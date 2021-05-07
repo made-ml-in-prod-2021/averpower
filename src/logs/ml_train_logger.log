@@ -1,0 +1,103 @@
+2021-05-06 15:07:15 ml_project INFO Read data. It has (303, 14) shape
+2021-05-06 15:07:15 ml_project INFO Split data. Train data has (272, 14) shape, validation data has (31, 14) shape
+2021-05-06 15:07:15 ml_project INFO Transformed data. Train data has (272, 29) shape, validation data has (31, 29) shape
+2021-05-06 15:07:15 ml_project INFO Learned LogisticRegression model with these params:
+{'C': 10, 'max_iter': 10000}
+2021-05-06 15:07:15 ml_project INFO Prediction for model LogisticRegression was made
+2021-05-06 15:07:15 ml_project INFO Metrics for prediction are:
+ {'roc_auc_score': 0.8697478991596639, 'precision': 0.8571428571428571, 'recall': 0.8571428571428571, 'f1_score': 0.8571428571428571}
+2021-05-06 15:12:59 ml_project INFO Read data. It has (303, 14) shape
+2021-05-06 15:12:59 ml_project INFO Split data. Train data has (242, 14) shape, validation data has (61, 14) shape
+2021-05-06 15:12:59 ml_project INFO Transformed data. Train data has (242, 29) shape, validation data has (61, 29) shape
+2021-05-06 15:13:10 ml_project INFO Learned GradientBoostingClassifier model with these params:
+{'learning_rate': 0.1, 'max_depth': 3, 'n_estimators': 100}
+2021-05-06 15:13:10 ml_project INFO Prediction for model GradientBoostingClassifier was made
+2021-05-06 15:13:10 ml_project INFO Metrics for prediction are:
+ {'roc_auc_score': 0.803846153846154, 'precision': 0.75, 'recall': 0.8076923076923077, 'f1_score': 0.7777777777777779}
+2021-05-06 15:13:54 ml_project INFO Read data. It has (303, 14) shape
+2021-05-06 15:13:54 ml_project INFO Split data. Train data has (242, 14) shape, validation data has (61, 14) shape
+2021-05-06 15:13:54 ml_project INFO Transformed data. Train data has (242, 29) shape, validation data has (61, 29) shape
+2021-05-06 15:14:09 ml_project INFO Learned GradientBoostingClassifier model with these params:
+{'learning_rate': 0.05, 'max_depth': 2, 'n_estimators': 100}
+2021-05-06 15:14:09 ml_project INFO Prediction for model GradientBoostingClassifier was made
+2021-05-06 15:14:09 ml_project INFO Metrics for prediction are:
+ {'roc_auc_score': 0.7609890109890111, 'precision': 0.6774193548387096, 'recall': 0.8076923076923077, 'f1_score': 0.7368421052631579}
+2021-05-06 15:15:27 ml_project INFO Read data. It has (303, 14) shape
+2021-05-06 15:15:27 ml_project INFO Split data. Train data has (242, 14) shape, validation data has (61, 14) shape
+2021-05-06 15:15:27 ml_project INFO Transformed data. Train data has (242, 29) shape, validation data has (61, 29) shape
+2021-05-06 15:15:45 ml_project INFO Learned GradientBoostingClassifier model with these params:
+{'learning_rate': 0.05, 'max_depth': 2, 'n_estimators': 100}
+2021-05-06 15:15:45 ml_project INFO Prediction for model GradientBoostingClassifier was made
+2021-05-06 15:15:45 ml_project INFO Metrics for prediction are:
+ {'roc_auc_score': 0.7609890109890111, 'precision': 0.6774193548387096, 'recall': 0.8076923076923077, 'f1_score': 0.7368421052631579}
+2021-05-06 15:20:44 ml_project INFO Read data. It has (303, 14) shape
+2021-05-06 15:30:23 ml_project INFO Read data. It has (303, 14) shape
+2021-05-06 15:30:23 ml_project INFO Split data. Train data has (242, 14) shape, validation data has (61, 14) shape
+2021-05-06 15:30:24 ml_project INFO Transformed data. Train data has (242, 29) shape, validation data has (61, 29) shape
+2021-05-06 15:30:41 ml_project INFO Learned GradientBoostingClassifier model with these params:
+{'learning_rate': 0.1, 'max_depth': 2, 'n_estimators': 50}
+2021-05-06 15:30:41 ml_project INFO Prediction for model GradientBoostingClassifier was made
+2021-05-06 15:30:41 ml_project INFO Metrics for prediction are:
+ {'roc_auc_score': 0.83495670995671, 'precision': 0.8484848484848485, 'recall': 0.8484848484848485, 'f1_score': 0.8484848484848486}
+2021-05-06 15:47:02 ml_project INFO Read data. It has (303, 14) shape
+2021-05-06 15:47:02 ml_project INFO Split data. Train data has (272, 14) shape, validation data has (31, 14) shape
+2021-05-06 15:47:02 ml_project INFO Transformed data. Train data has (272, 29) shape, validation data has (31, 29) shape
+2021-05-06 15:47:03 ml_project INFO Learned LogisticRegression model with these params:
+{'C': 10, 'max_iter': 10000}
+2021-05-06 15:47:03 ml_project INFO Prediction for model LogisticRegression was made
+2021-05-06 15:47:03 ml_project INFO Metrics for prediction are:
+ {'roc_auc_score': 0.8697478991596639, 'precision': 0.8571428571428571, 'recall': 0.8571428571428571, 'f1_score': 0.8571428571428571}
+2021-05-06 15:58:40 ml_project INFO Read data. It has (303, 14) shape
+2021-05-06 15:58:40 ml_project INFO Split data. Train data has (272, 14) shape, validation data has (31, 14) shape
+2021-05-06 15:58:40 ml_project INFO Transformed data. Train data has (272, 29) shape, validation data has (31, 29) shape
+2021-05-06 15:58:41 ml_project INFO Learned LogisticRegression model with these params:
+{'C': 10, 'max_iter': 10000}
+2021-05-06 15:58:41 ml_project INFO Prediction for model LogisticRegression was made
+2021-05-06 15:58:41 ml_project INFO Metrics for prediction are:
+ {'roc_auc_score': 0.8697478991596639, 'precision': 0.8571428571428571, 'recall': 0.8571428571428571, 'f1_score': 0.8571428571428571}
+2021-05-06 16:01:08 ml_project INFO Read data. It has (303, 14) shape
+2021-05-06 16:01:08 ml_project INFO Split data. Train data has (272, 14) shape, validation data has (31, 14) shape
+2021-05-06 16:01:08 ml_project INFO Transformed data. Train data has (272, 29) shape, validation data has (31, 29) shape
+2021-05-06 16:01:08 ml_project INFO Learned LogisticRegression model with these params:
+{'C': 10, 'max_iter': 10000}
+2021-05-06 16:01:08 ml_project INFO Saved model to path models/logistic_regression_model.pkl
+2021-05-06 16:01:08 ml_project INFO Prediction for model LogisticRegression was made
+2021-05-06 16:01:08 ml_project INFO Metrics for prediction are:
+ {'roc_auc_score': 0.8697478991596639, 'precision': 0.8571428571428571, 'recall': 0.8571428571428571, 'f1_score': 0.8571428571428571}
+2021-05-06 16:02:06 ml_project INFO Read data. It has (303, 14) shape
+2021-05-06 16:02:06 ml_project INFO Split data. Train data has (272, 14) shape, validation data has (31, 14) shape
+2021-05-06 16:02:06 ml_project INFO Transformed data. Train data has (272, 29) shape, validation data has (31, 29) shape
+2021-05-06 16:02:06 ml_project INFO Learned LogisticRegression model with these params:
+{'C': 10, 'max_iter': 10000}
+2021-05-06 16:02:06 ml_project INFO Saved model to path ../models/logistic_regression_model.pkl
+2021-05-06 16:02:06 ml_project INFO Prediction for model LogisticRegression was made
+2021-05-06 16:02:06 ml_project INFO Metrics for prediction are:
+ {'roc_auc_score': 0.8697478991596639, 'precision': 0.8571428571428571, 'recall': 0.8571428571428571, 'f1_score': 0.8571428571428571}
+2021-05-07 17:59:17 ml_project INFO Read data. It has (303, 14) shape
+2021-05-07 17:59:17 ml_project INFO Split data. Train data has (272, 14) shape, validation data has (31, 14) shape
+2021-05-07 17:59:50 ml_project INFO Read data. It has (303, 14) shape
+2021-05-07 17:59:50 ml_project INFO Split data. Train data has (272, 14) shape, validation data has (31, 14) shape
+2021-05-07 17:59:50 ml_project INFO Saved transformer on path ../models/transformer.pkl
+2021-05-07 17:59:50 ml_project INFO Transformed data. Train data has (272, 29) shape, validation data has (31, 29) shape
+2021-05-07 17:59:50 ml_project INFO Learned LogisticRegression model with these params:
+{'C': 10, 'max_iter': 10000}
+2021-05-07 17:59:50 ml_project INFO Saved model to path ../models/logistic_regression_model.pkl
+2021-05-07 17:59:50 ml_project INFO Prediction for model LogisticRegression was made
+2021-05-07 17:59:50 ml_project INFO Metrics for prediction are:
+ {'roc_auc_score': 0.8697478991596639, 'precision': 0.8571428571428571, 'recall': 0.8571428571428571, 'f1_score': 0.8571428571428571}
+2021-05-07 18:02:07 ml_project INFO Read source data. It has (303, 13) shape
+2021-05-07 18:02:07 ml_project INFO Generated fake test data. It has (100, 13) shape
+2021-05-07 18:02:34 ml_project INFO Read source data. It has (303, 13) shape
+2021-05-07 18:02:35 ml_project INFO Generated fake test data. It has (100, 13) shape
+2021-05-07 18:02:35 ml_project INFO Prediction of (100,) shape was made
+2021-05-07 18:03:08 ml_project INFO Read source data. It has (303, 13) shape
+2021-05-07 18:03:09 ml_project INFO Generated fake test data. It has (100, 13) shape
+2021-05-07 18:03:09 ml_project INFO Prediction of (100,) shape was made
+2021-05-07 19:01:32 ml_project INFO Read source data. It has (303, 13) shape
+2021-05-07 19:01:33 ml_project INFO Generated fake test data. It has (100, 13) shape
+2021-05-07 19:01:33 ml_project INFO Prediction of (100,) shape was made
+2021-05-07 19:01:33 ml_project INFO Predictions were saved on path ../data/predictions/prediction.txt
+2021-05-07 19:02:20 ml_project INFO Read source data. It has (303, 13) shape
+2021-05-07 19:02:20 ml_project INFO Generated fake test data. It has (100, 13) shape
+2021-05-07 19:02:20 ml_project INFO Prediction of (100,) shape was made
+2021-05-07 19:02:20 ml_project INFO Predictions were saved on path ../data/predictions/prediction.txt
