@@ -101,3 +101,25 @@
 2021-05-07 19:02:20 ml_project INFO Generated fake test data. It has (100, 13) shape
 2021-05-07 19:02:20 ml_project INFO Prediction of (100,) shape was made
 2021-05-07 19:02:20 ml_project INFO Predictions were saved on path ../data/predictions/prediction.txt
+2021-05-08 10:32:49 ml_project INFO Read data. It has (303, 14) shape
+2021-05-08 10:32:49 ml_project INFO Split data. Train data has (272, 14) shape, validation data has (31, 14) shape
+2021-05-08 10:43:39 ml_project INFO Read data. It has (303, 14) shape
+2021-05-08 10:43:39 ml_project INFO Split data. Train data has (272, 14) shape, validation data has (31, 14) shape
+2021-05-08 10:43:39 ml_project INFO Saved transformer on path ../models/transformer.pkl
+2021-05-08 10:43:39 ml_project INFO Transformed data. Train data has (272, 465) shape, validation data has (31, 465) shape
+2021-05-08 10:43:40 ml_project INFO Learned LogisticRegression model with these params:
+{'C': 0.01, 'max_iter': 10000}
+2021-05-08 10:43:40 ml_project INFO Saved model to path ../models/logistic_regression_model.pkl
+2021-05-08 10:43:40 ml_project INFO Prediction for model LogisticRegression was made
+2021-05-08 10:43:40 ml_project INFO Metrics for prediction are:
+ {'roc_auc_score': 0.834033613445378, 'precision': 0.8461538461538461, 'recall': 0.7857142857142857, 'f1_score': 0.8148148148148148}
+2021-05-08 10:44:19 ml_project INFO Read data. It has (303, 14) shape
+2021-05-08 10:44:19 ml_project INFO Split data. Train data has (242, 14) shape, validation data has (61, 14) shape
+2021-05-08 10:44:19 ml_project INFO Saved transformer on path ../models/transformer.pkl
+2021-05-08 10:44:19 ml_project INFO Transformed data. Train data has (242, 465) shape, validation data has (61, 465) shape
+2021-05-08 10:45:37 ml_project INFO Learned GradientBoostingClassifier model with these params:
+{'learning_rate': 0.05, 'max_depth': 2, 'n_estimators': 100}
+2021-05-08 10:45:37 ml_project INFO Saved model to path models/gradient_boosting.pkl
+2021-05-08 10:45:37 ml_project INFO Prediction for model GradientBoostingClassifier was made
+2021-05-08 10:45:37 ml_project INFO Metrics for prediction are:
+ {'roc_auc_score': 0.8804112554112554, 'precision': 0.8611111111111112, 'recall': 0.9393939393939394, 'f1_score': 0.8985507246376813}

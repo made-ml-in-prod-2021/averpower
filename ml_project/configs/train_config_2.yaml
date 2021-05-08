@@ -40,7 +40,5 @@ gs_params:
       - 50
       - 75
       - 100
-      - 150
-      - 200
   'cv': 4
   'scoring': 'roc_auc'

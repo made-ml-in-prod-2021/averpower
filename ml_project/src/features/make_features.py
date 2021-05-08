@@ -29,12 +29,14 @@ def build_categorical_pipeline() -> Pipeline:
 
 def build_transformer(params: FeatureParams) -> Pipeline:
     transformer = Pipeline(
-        ["col_transformer", ColumnTransformer(
-            [
-                ("numerical_pipeline", build_numerical_pipeline(), params.numerical_features),
-                ("categorical_features", build_categorical_pipeline(), params.categorical_features),
-            ]
-        ),
+        [("col_transformer",
+          ColumnTransformer(
+              [
+                  ("numerical_pipeline", build_numerical_pipeline(), params.numerical_features),
+                  ("categorical_features", build_categorical_pipeline(), params.categorical_features),
+              ]
+          )
+          ),
          ("poly", PolynomialFeatures(degree=2)),
          ]
     )
