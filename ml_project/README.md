@@ -11,11 +11,11 @@ pip install -r requirements.txt
 ~~~
 Usage:
 ~~~
-Train mode:
+ Train mode:
 
 python main_pipeline.py train ../configs/train_config_1.yaml
 
-Prediction mode:
+ Prediction mode:
 
 python main_pipeline.py predict ../configs/predict_config.yaml
 ~~~
