@@ -1,14 +1,15 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from marshmallow_dataclass import class_schema
 import yaml
-from enities.predict_path_params import PredictPathParams
 
 
 @dataclass()
 class PredictParams:
-    pathes: PredictPathParams
-    test_data_size: int
-    target_col: str
+    model_path: str
+    transformer_path: str
+    data_predict_path: str
+    output_path: str
+    log_path: str = field(default="../configs/logging_config.yaml")
 
 
 PredictParamsSchema = class_schema(PredictParams)

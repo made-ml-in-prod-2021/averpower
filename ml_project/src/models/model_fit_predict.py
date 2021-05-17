@@ -7,14 +7,13 @@ from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import roc_auc_score, precision_score, recall_score, f1_score
-
 from enities.gridsearch_params import GridSearchParams
 
 SklearnClassificationModel = Union[LogisticRegression, GradientBoostingClassifier]
 
 
 def train_model(features: pd.DataFrame,
-                target: pd.Series, model_type: str, gs_params: GridSearchParams) -> GridSearchCV:
+                target: pd.Series, model_type: str, gs_params: GridSearchParams) -> SklearnClassificationModel:
     if model_type == "LogisticRegression":
         model = GridSearchCV(LogisticRegression(), gs_params.param_grid, cv=gs_params.cv, scoring=gs_params.scoring)
     elif model_type == "GradientBoostingClassifier":
@@ -23,10 +22,10 @@ def train_model(features: pd.DataFrame,
     else:
         raise NotImplementedError()
     model.fit(features, target)
-    return model
+    return model.best_estimator_
 
 
-def predict_model(model: GridSearchCV, features: pd.DataFrame) -> np.ndarray:
+def predict_model(model: SklearnClassificationModel, features: pd.DataFrame) -> np.ndarray:
     predicts = model.predict(features)
     return predicts
 
@@ -45,7 +44,7 @@ def save_metrics(metric_path: str, metrics: Dict[str, float]):
         json.dump(metrics, metric_file)
 
 
-def save_model(model: GridSearchCV, output: str):
+def save_model(model: SklearnClassificationModel, output: str):
     with open(output, "wb") as f:
         pickle.dump(model, f)
 

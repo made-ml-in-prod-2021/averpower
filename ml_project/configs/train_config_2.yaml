@@ -1,4 +1,4 @@
-data_path: "../data/raw/data.xls"
+data_path: "../data/raw/data.csv"
 model_path: "models/gradient_boosting.pkl"
 transformer_path: "../models/transformer.pkl"
 metric_path: "models/metrics.json"

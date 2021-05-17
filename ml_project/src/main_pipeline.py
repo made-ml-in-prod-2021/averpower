@@ -25,20 +25,23 @@ def process_train_model(params: TrainParams):
     data_train, data_val = split_train_val_data(data, params.splitting_params, params.feature_params.target_col)
     logger.info(f"Split data. Train data has {data_train.shape} shape, validation data has {data_val.shape} shape")
 
+    target_train = data_train.loc[:, params.feature_params.target_col].copy()
+    target_val = data_val.loc[:, params.feature_params.target_col].copy()
+    data_train = data_train.drop(columns=[params.feature_params.target_col])
+    data_val = data_val.drop(columns=[params.feature_params.target_col])
+
     transformer = build_transformer(params.feature_params)
+    transformer.fit(data_train)
     save_transformer(transformer, params.transformer_path)
     logger.info(f"Saved transformer on path {params.transformer_path}")
-    transformer.fit(data_train)
+
     transformed_features_train = pd.DataFrame(transformer.transform(data_train))
     transformed_features_val = pd.DataFrame(transformer.transform(data_val))
     logger.info(
         f"Transformed data. Train data has {transformed_features_train.shape} shape, validation data has {transformed_features_val.shape} shape")
 
-    target_train = data_train[params.feature_params.target_col]
-    target_val = data_val[params.feature_params.target_col]
-
     model = train_model(transformed_features_train, target_train, params.model_type, params.gs_params)
-    logger.info(f"Learned {params.model_type} model with these params:\n{model.best_params_}")
+    logger.info(f"Learned {params.model_type} model with these params:\n{model.get_params()}")
     save_model(model, params.model_path)
     logger.info(f"Saved model to path {params.model_path}")
     predicts = predict_model(model, transformed_features_val)
@@ -49,20 +52,22 @@ def process_train_model(params: TrainParams):
 
 
 def process_predict(params: PredictParams):
-    data = read_data_without_target(params.pathes.data_source_path, params.target_col)
-    logger.info(f"Read source data. It has {data.shape} shape")
-    test_data = generate_fake_data(data, params.test_data_size)
-    logger.info(f"Generated fake test data. It has {test_data.shape} shape")
+    data = pd.read_csv(params.data_predict_path)
+    logger.info(f"Read data for prediction. It has {data.shape} shape")
 
-    model = load_model(params.pathes.model_path)
-    transformer = load_transformer(params.pathes.transformer_path)
-    transformed_features = pd.DataFrame(transformer.fit_transform(test_data))
-    predictions = model.predict(transformed_features)
+    transformer = load_transformer(params.transformer_path)
+    logger.info(f"Loaded transformer")
+    transformed_features = pd.DataFrame(transformer.transform(data))
+    logger.info(f"Transformed data. It has {transformed_features.shape} shape")
+
+    model = load_model(params.model_path)
+    logger.info(f"Loaded model")
+    predictions = predict_model(model, transformed_features)
     logger.info(f"Prediction of {predictions.shape} shape was made")
 
-    with open(params.pathes.output_path, 'w') as output_stream:
+    with open(params.output_path, 'w') as output_stream:
         output_stream.writelines(list(map(lambda x: str(x) + "\n", predictions)))
-    logger.info(f"Predictions were saved on path {params.pathes.output_path}")
+    logger.info(f"Predictions were saved on path {params.output_path}")
 
 
 @click.group()
@@ -82,7 +87,7 @@ def train_pipeline_command(config_path: str):
 @click.argument("config_path", default="../configs/predict_config.yaml")
 def predict_pipeline_command(config_path: str):
     params = read_predict_params(config_path)
-    setup_logging(params.pathes.log_path)
+    setup_logging(params.log_path)
     process_predict(params)
 
 

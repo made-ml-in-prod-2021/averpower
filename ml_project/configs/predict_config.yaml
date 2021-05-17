@@ -1,10 +1,6 @@
-pathes:
-  model_path: "../models/logistic_regression_model.pkl"
-  transformer_path: "../models/transformer.pkl"
-  data_source_path: "../data/raw/data.xls"
-  output_path: "../data/predictions/prediction.txt"
-  log_path: "../configs/logging_config.yaml"
-test_data_size: 100
-target_col: "target"
-
+model_path: "../models/logistic_regression_model.pkl"
+transformer_path: "../models/transformer.pkl"
+data_predict_path: "../data/raw/data_predict.csv"
+output_path: "../data/predictions/prediction.txt"
+log_path: "../configs/logging_config.yaml"
 
