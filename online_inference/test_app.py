@@ -3,24 +3,10 @@ import pytest
 from fastapi.testclient import TestClient
 from app import *
 
-SklearnClassificationModel = Union[LogisticRegression, GradientBoostingClassifier]
-model: Optional[SklearnClassificationModel] = None
-transformer: Optional[Pipeline] = None
-columns_info: pd.Series
 
-
-@app.on_event("startup")
-def start():
-    global model
-    model_path = os.getenv("PATH_TO_MODEL")
-    model = load_model(model_path)
-    global transformer
-    transformer_path = os.getenv("PATH_TO_TRANSFORMER")
-    transformer = load_transformer(transformer_path)
-    global columns_info
-    df = pd.read_csv("data.csv")
-    df = df.drop(columns=['target'])
-    columns_info = df.dtypes
+os.environ["PATH_TO_MODEL"] = "model.pkl"
+os.environ["PATH_TO_TRANSFORMER"] = "transformer.pkl"
+os.environ["PATH_TO_COL_NAMES"] = "columns.pkl"
 
 
 def test_model_is_set():
