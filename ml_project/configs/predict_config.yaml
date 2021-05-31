@@ -1,6 +1,0 @@
-model_path: "../models/logistic_regression_model.pkl"
-transformer_path: "../models/transformer.pkl"
-data_predict_path: "../data/raw/data_predict.csv"
-output_path: "../data/predictions/prediction.txt"
-log_path: "../configs/logging_config.yaml"
-
