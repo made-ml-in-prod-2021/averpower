@@ -1,25 +1,19 @@
-from datetime import timedelta, date
+from datetime import date
 import os
 from airflow import DAG
 from airflow.models import Variable
 from airflow.providers.docker.operators.docker import DockerOperator
 from airflow.utils.dates import days_ago
 from airflow.sensors.python import PythonSensor
-
-default_args = {
-    "owner": "airflow",
-    "email": ["airflow@example.com"],
-    "retries": 1,
-    "retry_delay": timedelta(minutes=5),
-}
+from constants import default_args, BASE_DIR
 
 
 def _wait_for_file():
-    return os.path.exists("/opt/airflow/data")
+    return os.path.exists(os.path.join("/opt/airflow/data/raw", date.today().strftime("%Y-%m-%d"), "data.csv"))
 
 
 with DAG(
-        "dag_3",
+        "dag_predict",
         default_args=default_args,
         schedule_interval="@daily",
         start_date=days_ago(0),
@@ -33,12 +27,11 @@ with DAG(
         retries=100,
         mode="poke",
     )
-
     predict = DockerOperator(
         image="airflow-predict",
         command="--input-dir /data/raw/{{ ds }} --model-dir {{var.value.model}} --output-dir /data/predictions/{{ ds }}",
         task_id="docker-airflow-predict",
         do_xcom_push=False,
-        volumes=["/home/mo/PycharmProjects/averpower_3/airflow_ml_dags/data:/data"]
+        volumes=[f"{BASE_DIR}:/data"]
     )
     wait >> predict

@@ -1,32 +1,29 @@
 import os
-from datetime import timedelta, date
+from datetime import date
 from airflow import DAG
 from airflow.models import Variable
 from airflow.providers.docker.operators.docker import DockerOperator
 from airflow.utils.dates import days_ago
 from airflow.sensors.python import PythonSensor
-import logging
-
-
-default_args = {
-    "owner": "airflow",
-    "email": ["airflow@example.com"],
-    "retries": 1,
-    "retry_delay": timedelta(minutes=5),
-}
+from constants import default_args, BASE_DIR
 
 
 def _wait_for_file():
-    return os.path.exists("/opt/airflow/data")
+    data_exists = os.path.exists(os.path.join("/opt/airflow/data/raw", date.today().strftime("%Y-%m-%d"), "data.csv"))
+    target_exists = os.path.exists(
+        os.path.join("/opt/airflow/data/raw", date.today().strftime("%Y-%m-%d"), "target.csv"))
+    return data_exists & target_exists
 
+
+today = date.today().strftime("%Y-%m-%d")
+Variable.set("model", f"/data/models/{today}")
 
 with DAG(
-        "dag_2",
+        "dag_train",
         default_args=default_args,
         schedule_interval="@weekly",
         start_date=days_ago(0),
 ) as dag:
-
     wait = PythonSensor(
         task_id="airflow-wait-file",
         python_callable=_wait_for_file,
@@ -41,7 +38,7 @@ with DAG(
         command="preprocess --input-dir /data/raw/{{ ds }} --output-dir /data/processed/{{ ds }}",
         task_id="docker-airflow-preprocess",
         do_xcom_push=False,
-        volumes=["/home/mo/PycharmProjects/averpower_3/airflow_ml_dags/data:/data"]
+        volumes=[f"{BASE_DIR}:/data"]
     )
 
     split = DockerOperator(
@@ -49,7 +46,7 @@ with DAG(
         command="split --input-dir /data/processed/{{ ds }}",
         task_id="docker-airflow-split",
         do_xcom_push=False,
-        volumes=["/home/mo/PycharmProjects/averpower_3/airflow_ml_dags/data:/data"]
+        volumes=[f"{BASE_DIR}:/data"]
     )
 
     train = DockerOperator(
@@ -57,7 +54,7 @@ with DAG(
         command="train --input-dir /data/processed/{{ ds }} --output-dir /data/models/{{ ds }}",
         task_id="docker-airflow-train",
         do_xcom_push=False,
-        volumes=["/home/mo/PycharmProjects/averpower_3/airflow_ml_dags/data:/data"]
+        volumes=[f"{BASE_DIR}:/data"]
     )
 
     validate = DockerOperator(
@@ -65,7 +62,7 @@ with DAG(
         command="validate --data-dir /data/processed/{{ ds }} --model-dir /data/models/{{ ds }}",
         task_id="docker-airflow-validate",
         do_xcom_push=False,
-        volumes=["/home/mo/PycharmProjects/averpower_3/airflow_ml_dags/data:/data"]
+        volumes=[f"{BASE_DIR}:/data"]
     )
 
     wait >> preprocess >> split >> train >> validate

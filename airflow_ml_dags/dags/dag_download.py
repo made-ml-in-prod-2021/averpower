@@ -1,18 +1,10 @@
-from datetime import timedelta
-
 from airflow import DAG
 from airflow.providers.docker.operators.docker import DockerOperator
 from airflow.utils.dates import days_ago
-
-default_args = {
-    "owner": "airflow",
-    "email": ["airflow@example.com"],
-    "retries": 1,
-    "retry_delay": timedelta(minutes=5),
-}
+from constants import default_args, BASE_DIR
 
 with DAG(
-        "dag_1",
+        "dag_download",
         default_args=default_args,
         schedule_interval="@daily",
         start_date=days_ago(7),
@@ -23,6 +15,6 @@ with DAG(
         network_mode="bridge",
         task_id="docker-airflow-download",
         do_xcom_push=False,
-        volumes=["/home/mo/PycharmProjects/averpower_3/airflow_ml_dags/data:/data"]
+        volumes=[f"{BASE_DIR}:/data"]
     )
 
