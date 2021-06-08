@@ -12,22 +12,22 @@ def test_dag_bag_loaded_correct(dags):
     assert dags.import_errors == {}
 
 
-def test_first_dag_loaded(dags):
+def test_download_dag_loaded(dags):
     assert "dag_download" in dags.dags
     assert len(dags.dags["dag_download"].tasks) == 1
 
 
-def test_second_dag_loaded(dags):
+def test_train_dag_loaded(dags):
     assert "dag_train" in dags.dags
     assert len(dags.dags["dag_train"].tasks) == 5
 
 
-def test_third_dag_loaded(dags):
+def test_predict_dag_loaded(dags):
     assert "dag_predict" in dags.dags
     assert len(dags.dags["dag_predict"].tasks) == 2
 
 
-def test_first_dag_content(dags):
+def test_download_dag_content(dags):
     content = {
         "docker-airflow-download": [],
     }
@@ -36,7 +36,7 @@ def test_first_dag_content(dags):
         assert set(content[name]) == task.downstream_task_ids
 
 
-def test_second_dag_content(dags):
+def test_train_dag_content(dags):
     content = {
         "airflow-wait-file": ["docker-airflow-preprocess"],
         "docker-airflow-preprocess": ["docker-airflow-split"],
@@ -49,7 +49,7 @@ def test_second_dag_content(dags):
         assert set(content[name]) == task.downstream_task_ids
 
 
-def test_third_dag_content(dags):
+def test_predict_dag_content(dags):
     content = {
         "airflow-wait-file": ["docker-airflow-predict"],
         "docker-airflow-predict": []
